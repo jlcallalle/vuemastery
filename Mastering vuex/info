@@ -1,0 +1,33 @@
+Mastering Vuex
+https://vuex.vuejs.org/
+https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex
+
+
+
+1.- Intro to Vuex
+Every component has direct access to this global state
+When one componene update the state, other component actually.
+
+data = state
+method = actions
+computer = getters
+
+the diferents is, the store also has mutations:
+Mutations are used to commit and track state changes
+Las mutaciones se utilizan para confirmar y realizar un seguimiento de los cambios de estado.
+
+Actions -> Mutations -> state
+
+Vuex provides
+ - Single source of truth
+ - Common library of actions, mutations, getters
+
+Link: https://vuex.vuejs.org/#what-is-a-state-management-pattern
+
+2.- Mastering Vuex Orientation
+3.- State & Getters
+4.- Mutations & Actions Pt.1
+5.- Mutations & Actions Pt.2
+6.- Modules
+7.- Sucess & Error Notifications
+
