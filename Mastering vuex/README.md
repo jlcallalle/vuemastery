@@ -4,6 +4,8 @@ Documentación:  https://vuex.vuejs.org/
 Link Curso:   https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex
 
 
+## 1.- Intro to Vuex
+
 Administrar el estado en una aplicación llena de componentes puede resultar difícil  
 Cuando hablamos de estado, nos referimos a los datos de los que dependen y procesan sus componentes.  
 Cosas como publicaciones de blog, elementos de tareas pendientes, etc
@@ -77,3 +79,126 @@ Si necesitamos la capacidad de recuperar solo los todos que están etiquetados c
 
 Vuex en movimiento
 ![Screenshot](https://firebasestorage.googleapis.com/v0/b/vue-mastery.appspot.com/o/flamelink%2Fmedia%2F1578371900954_6.gif?alt=media&token=a92f02df-8800-4f4a-ac63-6690f9453e66)
+
+
+## 2.- Mastering Vuex Orientation
+Prerequisites for this course include knowledge of:
+
+- Vue CLI
+- Vue Router
+- Single File .vue Components
+- API Calls with Axios
+
+Downloading the App
+https://github.com/Code-Pop/real-world-vue/releases/tag/lesson11-vuex-start
+
+Run proyect: 
+npm run serve
+
+Install Api Local
+npm install -g json-server
+json-server --watch db.json
+
+
+App Tour - Vue CLI
+
+En la página principal, mostramos una lista de eventos que estamos incorporando con nuestra API. Cuando hago clic en un evento, se nos lleva a la event-showpágina, que muestra los detalles completos de ese evento. Estamos usando Vue Router para la navegación de nuestro sitio, lo que también nos permite navegar entre páginas.
+
+
+En nuestra carpeta de vistas , tenemos 3 componentes,    
+que se cargan cuando navegamos a la ruta en la que viven.
+
+ 1.- /src/iews/EventCreate.vue : Pantalla simple
+
+``` html
+<template>
+    <h1>Create Event</h1>
+</template>
+
+```
+
+2.-  /src/views/EventList.vue: es mucho más interesante.
+
+``` js
+    <script>
+    import EventCard from '@/components/EventCard.vue'
+    import EventService from '@/services/EventService.js'
+    
+    export default {
+      components: {
+        EventCard
+      },
+      data() {
+        return {
+          events: []
+        }
+      },
+      created() {
+        EventService.getEvents()
+          .then(response => {
+            this.events = response.data
+          })
+          .catch(error => {
+            console.log('There was an error:', error.response)
+          })
+      }
+    }
+    </script>
+```
+
+Aqui, estamos haciendo una llamada a la API para obtener nuestros eventos **EventService.getEvents().**   
+Luego, establecemos el valor de nuestro componente events igual a la respuesta de la llamada a la API. También estamos detectando y registrando cualquier error en la consola.
+
+3.- /src/views/EventList.vue
+``` html
+    <template>
+        <div>
+        <h1>Events Listing</h1>
+        <EventCard v-for="event in events" :key="event.id" :event="event"/>
+        </div>
+    </template>
+```
+
+En nuestra plantilla, usamos v-forpara crear un componente EventCard para cada uno de nuestros events, y pasamos el evento como un accesorio para que EventCard pueda usarlo.
+
+ /src/components/EventCard.vue
+Recibe el eventobjeto como prop y muestra algunos de sus detalles en la plantilla.
+
+
+Comprender nuestras llamadas a la API
+
+ /src/views/EventList.vue
+
+ ``` js
+   import EventService from '@/services/EventService.js'
+    ...
+      created() {
+        EventService.getEvents()
+          .then(response => {
+            this.events = response.data
+          })
+          .catch(error => {
+            console.log('There was an error:', error.response)
+          })
+      }
+    ...
+```
+
+ /src/services/EventService.js
+
+
+ 
+ ``` js
+   import EventService from '@/services/EventService.js'
+    ...
+      created() {
+        EventService.getEvents()
+          .then(response => {
+            this.events = response.data
+          })
+          .catch(error => {
+            console.log('There was an error:', error.response)
+          })
+      }
+    ...
+```
