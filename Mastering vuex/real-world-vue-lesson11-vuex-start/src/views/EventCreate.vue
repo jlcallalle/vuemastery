@@ -2,6 +2,7 @@
   <div>
     <h1>Create Event - {{ $store.state.user.name }}</h1>
     <p>This event was created by  {{ userName }} with id: {{ userId }}</p>
+    <p>categories {{ categories  }}</p>
   </div>
 </template>
 
