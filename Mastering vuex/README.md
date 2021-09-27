@@ -291,3 +291,6 @@ export default {
 ```
 
 Podemos simplificar mapState, pasando un array de los valores de state.
+
+
+Object Spread Operator

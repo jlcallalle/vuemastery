@@ -12,10 +12,18 @@
 import { mapState } from 'vuex'
 
 export default {
-  computed: mapState ({
+  computed: {
+    localComputed() {
+      return something
+    },
+    ...mapState(['categories', 'user'])
+  }
+ /*  computed: mapState(['categories', 'user']) */
+ 
+/*   computed: mapState ({
     user: 'user',
     categories: 'categories'
-  })
+  }) */
 /*   computed: mapState ({
     userName: state => state.user.name,
     userId: state => state.user.id,
