@@ -97,7 +97,8 @@ npm run serve
 
 Install Api Local
 npm install -g json-server
-json-server --watch db.json
+
+Correr Servicio Local: json-server --watch db.json
 
 
 App Tour - Vue CLI
@@ -159,7 +160,7 @@ Luego, establecemos el valor de nuestro componente events igual a la respuesta d
     </template>
 ```
 
-En nuestra plantilla, usamos v-forpara crear un componente EventCard para cada uno de nuestros events, y pasamos el evento como un accesorio para que EventCard pueda usarlo.
+En nuestra plantilla, usamos v-for para crear un componente EventCard para cada uno de nuestros events, y pasamos el evento como un accesorio para que EventCard pueda usarlo.
 
  /src/components/EventCard.vue
 Recibe el eventobjeto como prop y muestra algunos de sus detalles en la plantilla.
@@ -202,3 +203,77 @@ Comprender nuestras llamadas a la API
       }
     ...
 ```
+
+Aquí, estamos importando la biblioteca Axios. Si aún no lo ha hecho, puede instalar Axios ejecutando este comando en su terminal:npm install axios.
+
+Luego, estamos creando una única instancia de Axios con apiClient. Cuando lo creamos, le damos un baseURLy establecemos algunas configuraciones predeterminadas.
+
+Como se señaló anteriormente, json-server es el archivo db.json como nuestra "base de datos" simulada, que contiene todos nuestros eventos. Entonces, cuando visitamos localhost:3000/events, podemos ver todos los eventos que viven en el archivo db.json . Y debido a que json-server es una API REST completamente falsa, podemos OBTENER eventos de él y POST eventos en él, etc
+
+## 3.- State & Getters{}
+
+- Accesing state  (accediento al estado)
+- Getters for derived state 
+- Mapping to computed properties
+
+Accediento a State (estados)
+in main.js
+    import store form './store'
+
+En instancia de vue, agregar, store (injected into all componentes)
+
+``` js
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+```
+
+store.js
+- AGREGAMOS ESTADOS (states)
+
+
+ ``` js
+  export default new Vuex.Store({
+  state: {
+    user: { id: '45421537', name: 'Jorge Callalle' },
+  },
+  mutations: {},
+  actions: {}
+})
+
+```
+- MOSTRAMOS ESTADOS  (State)
+  
+  $store:  hace que sea accesible globalmente, se puede inyectar en cada componente
+
+
+ ``` js
+<template>
+  <div>
+    <h1>Create Event - {{ $store.state.user.name }}</h1>
+    <p>This event was created by  {{ userName }} with id: {{ userId }}</p>
+  </div>
+</template>
+
+<script>
+
+export default {
+  computed: {
+    userName() {
+      return this.$store.state.user.name
+    },
+    userId() {
+      return this.$store.state.user.id
+    }
+  }
+}
+</script>
+
+```
+
+The mapState Helper
+Puede volverse repetitivo tener múltiples propiedades calculadas, cada una de las cuales devuelve este. 
+$ Store.state.something.   
+Para simplificar las cosas, podemos usar el ayudante mapState, que genera propiedades calculadas para nosotros.
