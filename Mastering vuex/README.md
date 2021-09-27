@@ -294,3 +294,65 @@ Podemos simplificar mapState, pasando un array de los valores de state.
 
 
 Object Spread Operator
+
+
+Getters
+_____________________________
+Accediento al Estado con Getter
+
+
+Si bien podemos acceder al estado de la tienda directamente, a veces queremos acceder al estado derivado. En otras palabras, es posible que deseemos procesar el estado de alguna manera cuando accedamos a él.
+
+Por ejemplo, en lugar de acceder a las categorías de nuestro estado, es posible que queramos saber cuántas categorías hay. En otras palabras, es posible que queramos saber la longitud de la matriz de categorías.
+
+Desde dentro de nuestro componente, podríamos decir:
+
+    this.$store.state.categories.length
+
+Pero, ¿qué pasa si varios componentes necesitan usar este mismo valor? Al crear un Vuex Getter, podemos evitar la duplicación de código innecesaria. Además, dado que los Getters se almacenan en caché, esta opción también es un poco más eficaz.
+
+``` js
+ getters: {
+    catLength: state => {
+      return state.categories.length
+    }
+  },
+
+  computed: {
+  catLength() {
+    return this.$store.getters.catLength
+  },
+}
+```
+
+Passing getters to Getters
+
+Si necesitáramos obtener el estado que queremos procesar junto con otro Getter, podemos pasar getters como segundo argumento a un Getter. Esto nos permite acceder a otro Getter desde dentro del Getter que estamos creando. Lo sé, eso suena un poco confuso.
+
+Pero para un ejemplo simple, digamos que tenemos una variedad de todos en nuestro estado.
+
+``` js
+ todos: [
+          { id: 1, text: '...', done: true },
+          { id: 2, text: '...', done: false },
+          { id: 3, text: '...', done: true },
+          { id: 4, text: '...', done: false }
+        ]
+```
+
+Podríamos tener un Getter que obtenga una matriz de todos los que están etiquetados como hechos.
+
+``` js
+  doneTodos: (state) => {
+    return state.todos.filter(todo => todo.done)
+  }
+```
+
+Y podemos usar este Getter dentro de otro Getter si queremos saber cuántos todos quedan por completar.
+
+
+``` js
+ activeTodosCount: (state, getters) => {
+      return state.todos.length - getters.doneTodos.length
+    }
+```

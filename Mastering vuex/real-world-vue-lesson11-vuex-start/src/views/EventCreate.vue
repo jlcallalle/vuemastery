@@ -5,6 +5,10 @@
     <ul>
       <li v-for="cat in categories" :key="cat"> {{ cat }}</li>
     </ul>
+    <p>cantidad: {{ categories.length }} </p> 
+    <p>Getter: Hay {{ catLength }} </p>
+    <p>doneTodos {{ doneTodos  }}</p>
+    <p>doneTodactiveTodosCountos {{ activeTodosCount  }}</p>
   </div>
 </template>
 
@@ -13,8 +17,15 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    localComputed() {
-      return something
+    catLength() {
+      //return this.$store.state.categories.length
+      return this.$store.getters.catLength
+    },
+    doneTodos() {
+      return this.$store.getters.doneTodos
+    },
+    activeTodosCount() {
+      return this.$store.getters.activeTodosCount
     },
     ...mapState(['categories', 'user'])
   }
