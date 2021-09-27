@@ -277,3 +277,17 @@ The mapState Helper
 Puede volverse repetitivo tener múltiples propiedades calculadas, cada una de las cuales devuelve este. 
 $ Store.state.something.   
 Para simplificar las cosas, podemos usar el ayudante mapState, que genera propiedades calculadas para nosotros.
+
+ ``` js
+import { mapState } from 'vuex'
+
+export default {
+  computed: mapState ({
+    userName: state => state.user.name,
+    userId: state => state.user.id,
+    categories: state => state.categories
+  })
+
+```
+
+Podemos simplificar mapState, pasando un array de los valores de state.
