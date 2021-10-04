@@ -20,6 +20,12 @@ export default new Vuex.Store({
       { id: 2, text: '...', done: false },
       { id: 3, text: '...', done: true },
       { id: 4, text: '...', done: false }
+    ],
+    events: [
+      { id: 1, title: '...', organizer: '...' },
+      { id: 2, title: '...', organizer: '...' },
+      { id: 3, title: '...', organizer: '...' },
+      { id: 4, title: '...', organizer: '...' }
     ]
   },
   getters: {
@@ -29,8 +35,14 @@ export default new Vuex.Store({
     doneTodos: state => {
       return state.todos.filter(todo => todo.done)
     },
+    /* activeTodosCount: state => {
+      return state.todos.filter(todo => !todo.done).length
+    }, */
     activeTodosCount: (state, getters) => {
       return state.todos.length - getters.doneTodos.length
+    },
+    getEventById: state => id => {
+      return state.events.find(event => event.id === id)
     }
   },
   mutations: {},
