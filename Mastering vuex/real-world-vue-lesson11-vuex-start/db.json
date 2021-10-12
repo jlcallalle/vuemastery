@@ -71,6 +71,60 @@
           "name": "Mary Gordon"
         }
       ]
+    },
+    {
+      "id": 6466858,
+      "user": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "category": "animal welfare",
+      "organizer": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "title": "test",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 7268460,
+      "user": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "category": "food",
+      "organizer": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "title": "olive oil",
+      "description": "healthy",
+      "location": "Lima",
+      "date": "2021-10-08T00:08:00.000Z",
+      "time": "18:00",
+      "attendees": []
+    },
+    {
+      "id": 4123797,
+      "user": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "45421537",
+        "name": "Jorge Callalle"
+      },
+      "title": "Vue Mastery",
+      "description": "Course Vuex",
+      "location": "Online",
+      "date": "2021-10-08T01:37:00.000Z",
+      "time": "13:00",
+      "attendees": []
     }
   ]
 }

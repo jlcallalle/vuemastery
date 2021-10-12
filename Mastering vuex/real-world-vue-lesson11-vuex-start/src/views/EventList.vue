@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Events Listing </h1>
-     <!-- <p>Getter: Hay {{ catLength }} </p> -->
-    <EventCard v-for="event in events" :key="event.id" :event="event"/>
+    <h1>Events Listing</h1>
+    <!-- <p>Getter: Hay {{ catLength }} </p> -->
+    <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
